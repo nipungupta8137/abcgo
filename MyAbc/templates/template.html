@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ .Title }}</title>
+
+	<link href='http://fonts.googleapis.com/css?family=Mr+Dafoe' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Amaranth:700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+
+    <span id="sl_play" class="sl_command">&nbsp;</span>
+    <span id="sl_pause" class="sl_command">&nbsp;</span>
+
+    {{range $i, $title := .Title}}
+	<span id="sl_{{$title}}" class="sl_command sl_i">&nbsp;</span>
+    {{end}}
+
+
+    <h1><span class="cursive">Juizy</span> slideshow <span>Full CSS3/HTML5 slideshow</span></h1>
+
+
+    <section id="slideshow">
+
+        {{range $i, $title := .Title}}
+        <a class="commands prev commands{{$i}}" href="#sl_i{{$i}}" title="Prev"></a>
+        <a class="commands next commands1" href="#sl_i{{$i}}" title="Next"></a>
+        {{end}}
+
+
+		<a class="play_commands pause" href="#sl_pause" title="Maintain paused">Pause</a>
+		<a class="play_commands play" href="#sl_play" title="Play the animation">Play</a>
+
+
+		<div class="container">
+			<div class="c_slider"></div>
+			<div class="slider">
+                {{range $i, $title := .Title}}
+				<figure>
+					<img src="/static/images/{{ index $.Image $i }}" alt="" width="640" height="310" />
+					<figcaption><span class="cursive">{{$title}} for {{ index $.Label $i }}</span> </figcaption>
+				</figure>
+				{{end}}
+			</div>
+		</div>
+
+		<span id="timeline"></span>
+
+		<ul class="dots_commands">
+            {{range $i, $title := .Title}}
+			<li><a title="Show slide {{$i}}" href="#sl_i{{$title}}">Slide {{$i}}</a></li>
+            {{end}}
+		</ul>
+
+	</section>
+
+	<footer>
+
+    {{range $i, $title := .Title}}
+      <br>{{$title}} for {{ index $.Label $i }} with image as {{ index $.Image $i }}
+    {{end}}
+
+	<p>Created and Designed</p>
+	</footer>
+</body>
+</html>
