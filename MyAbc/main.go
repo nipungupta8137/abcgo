@@ -57,5 +57,5 @@ func init() {
     http.HandleFunc("/view/", handler)
     http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-//	log.Fatal(http.ListenAndServe(":8080", nil))
+//log.Fatal(http.ListenAndServe(":8080", nil))
 }
