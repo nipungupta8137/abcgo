@@ -1,10 +1,9 @@
-package main
+package hello
 
 import (
     "html/template"
     "log"
-    //"os"
-	"net/http"
+    "net/http"
 )
 
 type Page struct {
@@ -54,10 +53,9 @@ func handler(w http.ResponseWriter, r *http.Request) {
     }
 }
 
-func main() {
-
+func init() {
     http.HandleFunc("/view/", handler)
     http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+//	log.Fatal(http.ListenAndServe(":8080", nil))
 }
